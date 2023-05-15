@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Card from './Card';
 import DiscountTag from './DiscountTag';
+import Price from './Price';
 
 function ItemsList(props) {
     if (!props.items) {
@@ -24,11 +25,7 @@ function ItemsList(props) {
                             <a href={`/product?sku=` + item.sku}>
                                 <p className='fw-bold mb-1'>{item.brand.name}</p>
                                 <p className='product-name'>{item.image.label}</p>
-                                <div className='d-flex'>
-                                    {item.price_range.minimum_price.discount.percent_off === 0 ? <p className='fw-bold mb-0'>฿{item.price_range.minimum_price.regular_price.value}</p> : <p className='fw-bold text-danger mb-0'>฿{item.price_range.minimum_price.final_price.value}</p>}
-                                    {item.price_range.minimum_price.discount.percent_off != 0 ? <p className='ms-2 text-decoration-line-through mb-0 opacity-75 mb-0'>฿{item.price_range.minimum_price.regular_price.value}</p> : ''}
-                                </div>
-                                {item.price_range.minimum_price.discount.percent_off != 0 ? <p className='fw-bold text-danger'>SAVE ฿{item.price_range.minimum_price.discount.amount_off}</p> : ''}
+                                <Price discount={item.price_range.minimum_price.discount.percent_off} price={item.price_range.minimum_price.regular_price.value} finalPrice={item.price_range.minimum_price.final_price.value} discountOff={item.price_range.minimum_price.discount.amount_off} />
                             </a>
                         </div>
                         <div className='card-footer p-2 border-0 bg-white'>
