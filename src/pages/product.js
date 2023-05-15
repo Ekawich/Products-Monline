@@ -2,7 +2,7 @@ import React from 'react';
 
 function Product(props) {
     return (
-        <div>
+        <div className='container'>
             test1234
         </div>
     );

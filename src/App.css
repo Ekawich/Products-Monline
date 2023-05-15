@@ -2,6 +2,11 @@
 	overflow: hidden;
 }
 
+a {
+	text-decoration: none !important;
+	color: black !important;
+}
+
 .product-name {
 	font-size: 14px;
 	line-height: 1.63;
