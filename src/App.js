@@ -1,34 +1,28 @@
-import logo from './logo.svg';
-import {useEffect} from 'react'
 import './App.css';
+import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Product from './pages/Product';
+import Products from './pages/Products';
 
 function App() {
-  useEffect(() => {
-    getProducts()
-  },[])
+  const [productId, setProductId] = useState('')
 
-  const getProducts = async () => {
-    const response = await fetch("https://uat-ostrich.monline.com/api/test/products")
-    const data = await response.json()
-    console.log(data)
-  }
+  // const selectProduct = (sku) => {
+  //   window.location.pathname('product/' + productId)
+  // }
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <p className="fw-bold text-uppercase">test</p>
-        </a>
-      </header>
+      <div className='container'>
+        <div className='py-5'>
+          <BrowserRouter>
+            <Routes>
+              <Route index element={<Products />} />
+              <Route path={'product/' + productId} element={<Product />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </div>
     </div>
   );
 }
