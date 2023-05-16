@@ -5,6 +5,7 @@
 a {
 	text-decoration: none !important;
 	color: black !important;
+	cursor: pointer;
 }
 
 .product-name {

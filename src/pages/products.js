@@ -5,39 +5,33 @@ import ItemsList from '../components/ItemsList'
 function Products(props) {
     const [products, setProducts] = useState('')
     const [currentPage, setCurrentPage] = useState(1)
-    const [totalPages, setTotalPages] = useState(null)
+    const [totalItems, setTotalItems] = useState(1)
+    const [limitPage, setLimitPage] = useState(12)
 
     useEffect(() => {
         fetchProducts()
     }, [])
+
+    useEffect(() => {
+        fetchProducts()
+    }, [currentPage])
+
+    const changePages = (page) => {
+        setCurrentPage(page)
+    }
 
     const fetchProducts = async () => {
         const response = await fetch("https://p7clalenvrbbdvxkk2qbueutgu0srocj.lambda-url.ap-southeast-1.on.aws?page=" + currentPage + "&limit=12")
         const data = await response.json()
         console.log(data, currentPage)
         setProducts(data.items)
-        setTotalPages(parseInt(data.meta.totalPages))
-    }
-
-
-    const nextPage = () => {
-        if (currentPage < totalPages) {
-            let pageNow = currentPage
-            setCurrentPage(pageNow++)
-        }
-    }
-
-    const prevPage = () => {
-        if (currentPage > 1) {
-            let pageNow = currentPage
-            setCurrentPage(pageNow--)
-        }
+        setTotalItems(parseInt(data.meta.totalItems))
     }
 
     return (
         <div className='container py-5'>
             <ItemsList items={products} />
-            <Paginations totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} />
+            <Paginations totalItems={totalItems} limitPage={limitPage} changePages={changePages} />
         </div>
     );
 }
