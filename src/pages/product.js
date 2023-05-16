@@ -16,7 +16,12 @@ function Product(props) {
     }, [])
 
     const fetchProduct = async (sku) => {
-        const response = await fetch("https://2oftzcdorsag57vyq4tuenuvru0dmlhz.lambda-url.ap-southeast-1.on.aws?sku=" + sku)
+        const response = await fetch("https://2oftzcdorsag57vyq4tuenuvru0dmlhz.lambda-url.ap-southeast-1.on.aws?sku=" + sku, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
         const data = await response.json()
         setProduct(data)
     }

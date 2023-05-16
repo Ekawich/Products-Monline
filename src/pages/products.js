@@ -21,7 +21,12 @@ function Products(props) {
     }
 
     const fetchProducts = async () => {
-        const response = await fetch("https://p7clalenvrbbdvxkk2qbueutgu0srocj.lambda-url.ap-southeast-1.on.aws?page=" + currentPage + "&limit=" + limitPage)
+        const response = await fetch("https://p7clalenvrbbdvxkk2qbueutgu0srocj.lambda-url.ap-southeast-1.on.aws?page=" + currentPage + "&limit=" + limitPage, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
         const data = await response.json()
         // console.log(data, currentPage)
         setProducts(data.items)
