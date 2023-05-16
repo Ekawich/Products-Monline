@@ -9,7 +9,7 @@ function ItemsList(props) {
     }
 
     return (
-        <div className='row g-4'>
+        <div className='row g-lg-4 g-3'>
             {props.items.map((item, idx) => {
                 return <div className='col-lg-3 col-md-4 col-6' key={idx}>
                     <Card>

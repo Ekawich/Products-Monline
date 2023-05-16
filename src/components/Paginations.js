@@ -30,7 +30,7 @@ function Paginations(props) {
 
     return (
         <nav aria-label="Page navigation">
-            <ul className="pagination float-end mt-4">
+            <ul className="pagination float-end mt-lg-4 mt-3">
                 <li className="page-item">
                     <a className="page-link" aria-label="Previous" onClick={prevPage}>
                         <span aria-hidden="true">&laquo;</span>

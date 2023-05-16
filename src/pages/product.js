@@ -18,8 +18,13 @@ function Product(props) {
     }
 
     return (
-        <div className='container'>
-            <img src={product.image.url} />
+        <div className='container py-5'>
+            <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><a href="/">Home</a></li>
+                    <li className="breadcrumb-item active" aria-current="page">{product.name}</li>
+                </ol>
+            </nav>
         </div>
     );
 }
