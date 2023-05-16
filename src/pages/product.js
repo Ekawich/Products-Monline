@@ -8,7 +8,7 @@ const params = new URLSearchParams(window.location.search);
 const sku = params.get('sku');
 
 function Product(props) {
-    const [product, setProduct] = useState('')
+    const [product, setProduct] = useState(null)
     const [quantity, setQuantity] = useState(1)
 
     useEffect(() => {
@@ -18,19 +18,21 @@ function Product(props) {
     const fetchProduct = async (sku) => {
         const response = await fetch("https://2oftzcdorsag57vyq4tuenuvru0dmlhz.lambda-url.ap-southeast-1.on.aws?sku=" + sku)
         const data = await response.json()
-        console.log(data)
         setProduct(data)
     }
 
     return (
         <div className='container py-5'>
+            {/* breadcrumb */}
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item"><a href="/">Home</a></li>
                     <li className="breadcrumb-item active" aria-current="page">{product.name}</li>
                 </ol>
             </nav>
+            {/* end breadcrumb */}
             <div className='row g-5'>
+                {/* show image */}
                 <div className='col-lg-5'>
                     <div>
                         <div id="carouselExample" className="carousel carousel-dark slide">
@@ -57,6 +59,9 @@ function Product(props) {
                         </div>
                     </div>
                 </div>
+                {/* end show image */}
+
+                {/* detail */}
                 <div className='col-lg-7'>
                     <div>
                         {product ? <p className='fs-2 text-decoration-underline'>{product.brand.name}</p> : ''}
@@ -111,6 +116,7 @@ function Product(props) {
                         </div>
                     </div>
                 </div>
+                {/* end detail */}
             </div>
         </div>
     );

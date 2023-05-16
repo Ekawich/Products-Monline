@@ -3,7 +3,7 @@ import Paginations from '../components/Paginations';
 import ItemsList from '../components/ItemsList'
 
 function Products(props) {
-    const [products, setProducts] = useState('')
+    const [products, setProducts] = useState(null)
     const [currentPage, setCurrentPage] = useState(1)
     const [totalItems, setTotalItems] = useState(1)
     const [limitPage, setLimitPage] = useState(12)
@@ -23,7 +23,7 @@ function Products(props) {
     const fetchProducts = async () => {
         const response = await fetch("https://p7clalenvrbbdvxkk2qbueutgu0srocj.lambda-url.ap-southeast-1.on.aws?page=" + currentPage + "&limit=" + limitPage)
         const data = await response.json()
-        console.log(data, currentPage)
+        // console.log(data, currentPage)
         setProducts(data.items)
         setTotalItems(parseInt(data.meta.totalItems))
     }
