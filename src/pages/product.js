@@ -27,7 +27,7 @@ function Product(props) {
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item"><a href="/">Home</a></li>
-                    <li className="breadcrumb-item active" aria-current="page">{product.name}</li>
+                    {product ? <li className="breadcrumb-item active" aria-current="page">{product.name}</li> : ''}
                 </ol>
             </nav>
             {/* end breadcrumb */}
