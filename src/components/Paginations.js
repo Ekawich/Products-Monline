@@ -23,6 +23,11 @@ function Paginations(props) {
         }
     }
 
+    const changePages = (page) => {
+        setCurrentPage(page)
+        props.changePages(page)
+    }
+
     return (
         <nav aria-label="Page navigation">
             <ul className="pagination float-end mt-4">
@@ -31,7 +36,7 @@ function Paginations(props) {
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
-                <Paginate numberPage={totalPages} currentPage={currentPage} />
+                <Paginate numberPage={totalPages} currentPage={currentPage} changePages={changePages} />
                 <li className="page-item">
                     <a className="page-link" aria-label="Next" onClick={nextPage}>
                         <span aria-hidden="true">&raquo;</span>
